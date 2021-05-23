@@ -12,5 +12,5 @@ clean:
 run:
 	./smartLamp
 
-smarteeth: smartLamp.cpp
+smartLamp: smartLamp.cpp
 	$(CXX) $< -o $@ $(CXXFLAGS) $(LDFLAGS)
