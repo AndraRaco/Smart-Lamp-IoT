@@ -39,6 +39,14 @@
                 "byte-size":10,
                 "regex-rule": "[1-4]", // Correct inputs will be any number between 1 and 4, default 1 if the number is not in range 
                 "optional": false
+            },
+            {
+                "name":"autoStart",
+                "description": "Sets if the lamp will start automatically",
+                "token-type":"bool",
+                "byte-size":10,
+                "regex-rule": "[0-1]", // Correct inputs will be any number between 0 or 1. O for false, 1 for true 
+                "optional": true
             }
             ]
         },
@@ -86,6 +94,14 @@
                 "byte-size":10,
                 "regex-rule": "[1-4]", // Correct inputs will be any number between 1 and 4, default 1 if the number is not in range 
                 "optional": false
+            },
+             {
+                "name":"autoStart",
+                "description": "Sets if the lamp will start automatically",
+                "token-type":"bool",
+                "byte-size":10,
+                "regex-rule": "[0-1]", // Correct inputs will be any number between 0 or 1. O for false, 1 for true 
+                "optional": true
             }
             ]
         },
@@ -101,6 +117,62 @@
                 "byte-size":10, 
                 "regex-rule": "[0-9]+", // Correct inputs will be: any number saved. Out of range => error message
                 "optional": false
+            },
+            {
+                "name":"autoStart",
+                "description": "Sets if the lamp will start automatically",
+                "token-type":"bool",
+                "byte-size":10,
+                "regex-rule": "[0-1]", // Correct inputs will be any number between 0 or 1. O for false, 1 for true 
+                "optional": true
+            }
+            ]
+        },
+        
+       "4":{
+            "token-delimitators": ";",
+            "protocol": "HTTP",
+            "prefix": "curl -XPOST 'http://127.0.0.1:9080/configureDefault/:configureJSON'",
+            "buffer-tokens":[
+            {
+                "name":"isOn",
+                "description":"Turn on/off the lamp",
+                "token-type":"bool", 
+                "byte-size":2, 
+                "regex-rule": "[0|1]", // Correct inputs will be: 0/1
+                "optional": false
+            },
+            {
+                "name":"Brightness",
+                "description": "Sets the brightness",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "(0|[1-9][0-9]?|100)", // Correct inputs will be any number between 0 and 100
+                "optional": false
+            },
+            {
+                "name":"Colour",
+                "description": "Sets the colour",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "[1-7]", // Correct inputs will be any number between 1 and 7, default 1 if the number is not in range 
+                "optional": false
+            },
+            {
+                "name":"Motion",
+                "description": "Sets the motion",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "[1-4]", // Correct inputs will be any number between 1 and 4, default 1 if the number is not in range 
+                "optional": false
+            },
+            {
+                "name":"autoStart",
+                "description": "Sets if the lamp will start automatically",
+                "token-type":"bool",
+                "byte-size":10,
+                "regex-rule": "[0-1]", // Correct inputs will be any number between 0 or 1. O for false, 1 for true 
+                "optional": true
             }
             ]
         }
