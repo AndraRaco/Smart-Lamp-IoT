@@ -9,6 +9,9 @@ Raportul de analiza a proiectului se gaseste [aici](https://github.com/AndraRaco
 Git clone this project to your machine.
 
 ### Prerequisites (de adaugat cv aici)
+- C++ compiler capable of building projects using C++ 17 or up
+- Pistache build 002 from 20210409 or up
+- Due to Pistache's current OS support, a device running MacOS or Linux is required
 
 Build tested on Ubuntu Server. You need to install Pistache library and C++ 17 compiler. 
 
