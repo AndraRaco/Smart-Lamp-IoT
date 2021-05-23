@@ -16,13 +16,23 @@ Git clone this project to your machine.
 
 Build tested on Ubuntu Server. You need to install Pistache library and C++ 17 compiler. 
 
-
 ## Building
 
 - Go to folder's location on your machine
 - Run this comand in terminal: 
 
-  - g++ smartLamp.cpp -o smartLamp -lpistache -lcrypto -lssl -lpthread -std=c++17
+  - g++ smartLamp.cpp -o smartLamp -lpistache -lcrypto -lssl -lpthread -std=c++17 -lpaho-mqttpp3 -lpaho-mqtt3a
+  
+  - `paho-mqttpp3` is the Paho C++ client library, and `paho-mqtt3a` is the C library it depends on (for MQTT)
+  
+- In a separate terminal, start the Mosquitto server:
+
+```sh
+mosquitto -v
+```
+
+The `-v` argument stands for verbose. Detailed logs are provided this way.
+  
 - Run this command after: 
 
   - ./smartLamp
@@ -81,6 +91,18 @@ The app comes with some default configurations which can be found in Configurati
 
 If the user decides to add another configuration (SetConfig method), the default configuration will be overwritten, thus saving the last confiration. If the configuration has '-' instead of a value, the correspinding value will be left as default. The same thing happens when the user tries to update a configuration. The last configuration will be written in the file, thus overwritting the default configuration.   
 
+#### MQTT
+
+For MQTT protocol support, you can use the Eclipse [Paho](https://www.eclipse.org/paho) client library. The [Paho C++ library](https://github.com/eclipse/paho.mqtt.cpp#unix-and-linux) can be installed from source (will require you to also build and install the Paho C library).
+
+MQTT sends messages to a server, therefore having a server is required. For this, you can use Eclipse [Mosquitto](https://mosquitto.org/).
+
+Installation on Ubuntu:
+```
+sudo apt-add-repository ppa:mosquitto-dev/mosquitto-ppa
+sudo apt update
+sudo apt install mosquitto
+```
 
 ## Membrii echipei
 
