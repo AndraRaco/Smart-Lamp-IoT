@@ -1,6 +1,6 @@
 17.PHONY: all build clean run
 
-LDFLAGS += -lpistache -lcrypto -lssl -lpthread -std=c++17
+LDFLAGS += -lpistache -lcrypto -lssl -lpthread -std=c++17 -lpaho-mqttpp3 -lpaho-mqtt3a
 
 all: build run
 

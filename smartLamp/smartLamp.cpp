@@ -8,6 +8,7 @@
 #include <ctime>
 #include <stdlib.h> 
 #include <filesystem>
+#include <mqtt/client.h>
 
 using namespace std;
 using namespace Pistache;
@@ -542,6 +543,36 @@ void clap(const Rest::Request& request, Http::ResponseWriter response)
     response.send(Http::Code::Ok, returnString.c_str());
 }
 
+void mqttExample() {
+    const std::string address = "localhost";
+    const std::string clientId = "lamp";
+
+    // Create a client
+    mqtt::client client(address, clientId);
+
+    mqtt::connect_options options;
+    options.set_keep_alive_interval(20);
+    options.set_clean_session(true);
+
+    try {
+        // Connect to the client
+        client.connect(options);
+
+        // Create a message
+        const std::string TOPIC = "lamp";
+        const std::string PAYLOAD = "Connected to the lamp!";
+        auto msg = mqtt::make_message(TOPIC, PAYLOAD);
+
+        // Publish it to the server
+        client.publish(msg);
+
+        // Disconnect
+        client.disconnect();
+    }
+    catch (const mqtt::exception& exc) {
+        std::cerr << exc.what() << " [" << exc.get_reason_code() << "]" << std::endl;
+    }
+}
 
 int main() {
     // Set up routes
@@ -583,6 +614,8 @@ int main() {
     rewind(f);
     fread(str, sizeof(char), size, f);
     cout<< str << "\n";
+
+    mqttExample();
 
     //Split ;
     // Returns first token 
