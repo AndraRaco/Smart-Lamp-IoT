@@ -1,0 +1,147 @@
+{
+    "device-name": "Smart Lamp",
+    "device-type": "Lamp",
+    "buffers-count": 1,
+    "input-buffers":{
+        "1":{
+            "token-delimitators": ";",
+            "protocol": "HTTP",
+            "prefix": "curl -XPOST 'http://127.0.0.1:9080/configure/:configureJSON'",
+            "buffer-tokens":[
+            {
+                "name":"isOn",
+                "description":"Turn on/off the lamp",
+                "token-type":"bool", 
+                "byte-size":2, 
+                "regex-rule": "[0|1]", // Correct inputs will be: 0/1
+                "optional": false
+            },
+            {
+                "name":"Brightness",
+                "description": "Sets the brightness",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "(0|[1-9][0-9]?|100)", // Correct inputs will be any number between 0 and 100
+                "optional": false
+            },
+            {
+                "name":"Colour",
+                "description": "Sets the colour",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "[1-7]", // Correct inputs will be any number between 1 and 7, default 1 if the number is not in range 
+                "optional": false
+            },
+            {
+                "name":"Motion",
+                "description": "Sets the motion",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "[1-4]", // Correct inputs will be any number between 1 and 4, default 1 if the number is not in range 
+                "optional": false
+            }
+            ]
+        },
+       "2":{
+            "token-delimitators": ";",
+            "protocol": "HTTP",
+            "prefix": "curl -XPOST 'http://127.0.0.1:9080/configure/:configurationNumber/:configureJSON'",
+            "buffer-tokens":[
+            {
+                "name":"configurationNumber",
+                "description":"The index number of the configuration",
+                "token-type":"int", 
+                "byte-size":10, 
+                "regex-rule": "[0-9]+", // Correct inputs will be: any number saved. Out of range => error message
+                "optional": false
+            },
+            {
+                "name":"isOn",
+                "description":"Turn on/off the lamp",
+                "token-type":"bool", 
+                "byte-size":2, 
+                "regex-rule": "[0|1]", // Correct inputs will be: 0/1
+                "optional": false
+            },
+            {
+                "name":"Brightness",
+                "description": "Sets the brightness",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "(0|[1-9][0-9]?|100)", // Correct inputs will be any number between 0 and 100
+                "optional": false
+            },
+            {
+                "name":"Colour",
+                "description": "Sets the colour",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "[1-7]", // Correct inputs will be any number between 1 and 7, default 1 if the number is not in range 
+                "optional": false
+            },
+            {
+                "name":"Motion",
+                "description": "Sets the motion",
+                "token-type":"int",
+                "byte-size":10,
+                "regex-rule": "[1-4]", // Correct inputs will be any number between 1 and 4, default 1 if the number is not in range 
+                "optional": false
+            }
+            ]
+        },
+        "3":{
+            "token-delimitators": ";",
+            "protocol": "HTTP",
+            "prefix": "curl -XPOST 'http://127.0.0.1:9080/clap/:configurationNumber'",
+            "buffer-tokens":[
+            {
+                "name":"configurationNumber",
+                "description":"The index number of the configuration",
+                "token-type":"int", 
+                "byte-size":10, 
+                "regex-rule": "[0-9]+", // Correct inputs will be: any number saved. Out of range => error message
+                "optional": false
+            }
+            ]
+        }
+    },
+    "output-buffers":{
+        "1":{
+            "token-delimitators": "",
+            "protocol": "HTTP",
+            "prefix": "curl -XGET 'http://127.0.0.1:8080/configure/:configurationNumber'",
+            "buffer-tokens":[
+                {
+                    "name":"configurationNumber",
+                    "description":"The index number of the configuration",
+                    "token-type":"int", 
+                    "byte-size":10, 
+                    "regex-rule": "[0-9]+", // Correct inputs will be: any number saved. Out of range => error message
+                    "optional": false
+                }
+            ]
+        },
+        "2":{
+            "token-delimitators": "",
+            "protocol": "HTTP",
+            "prefix": "curl -XGET 'http://127.0.0.1:8080/deleteConfigure/:configurationNumber'",
+            "buffer-tokens":[
+                {
+                    "name":"configurationNumber",
+                    "description":"The index number of the configuration",
+                    "token-type":"int", 
+                    "byte-size":10, 
+                    "regex-rule": "[0-9]+", // Correct inputs will be: any number saved. Out of range => error message
+                    "optional": false
+                }
+            ]
+        },
+        "3":{
+            "token-delimitators": "",
+            "protocol": "HTTP",
+            "prefix": "curl -XGET 'http://127.0.0.1:8080/timeChecker'",
+            "buffer-tokens":[ ]
+        }
+    }
+}
+
