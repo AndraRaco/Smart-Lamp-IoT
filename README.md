@@ -50,7 +50,8 @@ JSON Specifications can be found [here](https://github.com/AndraRaco/Smart-Lamp-
   - first parameter is the ConfigurationNumber; If is out of range => error message;
  
 - Prints a spcific configuration 
-  - first parameter is the ConfigurationNumber; If is out of range => error message
+  - first parameter is the ConfigurationNumber; If is out of range => error message <br>
+  
      Example for output:
      <br>
      "This lamp's current configuration: <br>
@@ -60,7 +61,8 @@ JSON Specifications can be found [here](https://github.com/AndraRaco/Smart-Lamp-
       motion:FIXED"
       
 - Deletes a spcific configuration 
-  - first parameter is the ConfigurationNumber; If is out of range => error message
+  - first parameter is the ConfigurationNumber; If is out of range => error message <br>
+  
      Deletes the configuration and prints a message: <br>
      "Successfuly deleted. <br>
       Deleted lamp's configuration: <br>
