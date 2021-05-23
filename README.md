@@ -74,6 +74,13 @@ JSON Specifications can be found [here](https://github.com/AndraRaco/Smart-Lamp-
       brightness:54 <br>
       color:GREEN <br>
       motion:FIXED""
+      
+## Stateful App
+
+The app comes with some default configurations which can be found in ConfigurationDefault file (0;67;1;1;1). This means that the lamp will be switched off, will have the brightness set to 67%, colour will be white and motion will be off. The last parameter means the autoStart property is on, that means that the lamp will automatically switch on between 18 and 24. 
+
+If the user decides to add another configuration (SetConfig method), the default configuration will be overwritten, thus saving the last confiration. If the configuration has '-' instead of a value, the correspinding value will be left as default. The same thing happens when the user tries to update a configuration. The last configuration will be written in the file, thus overwritting the default configuration.   
+
 
 ## Membrii echipei
 
