@@ -13,10 +13,16 @@ Git clone this project to your machine.
 - Pistache build 002 from 20210409 or up
 - Due to Pistache's current OS support a device running MacOS or Linux is required
 - [QOL] Postman or any API calling software
-
-Build tested on Ubuntu Server. You need to install Pistache library and C++ 17 compiler. 
-
+ 
+Pistache can be intalled easily on Ubuntu from a PPA
+```
+$ sudo add-apt-repository ppa:pistache+team/stable
+$ sudo apt update
+$ sudo apt install libpistache-dev
+```
+ 
 ## Building
+Build tested on Ubuntu Server. You need to install Pistache library and C++ 17 compiler.
 
 - Go to folder's location on your machine
 - Run this comand in terminal: 
